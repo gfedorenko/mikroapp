@@ -1,12 +1,8 @@
-FROM node:10.11
+FROM quay.io/openware/wio:0.1.0
 
-WORKDIR /home/node
+WORKDIR /home/node/
 COPY . .
-RUN chown -R node:node .
-
-USER node
-RUN yarn install
 
 EXPOSE 3000
 
-CMD ["yarn", "start"]
+CMD ["-d", "/home/node/build", "-s", "1", "-h", "0.0.0.0:3000"]
